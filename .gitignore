@@ -1,0 +1,18 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Generated
+logs/
+output/
+
+# Jupyter
+.ipynb_checkpoints/
+
+Mini Project 00 Instructions.pdf

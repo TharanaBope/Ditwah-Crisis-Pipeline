@@ -1,0 +1,28 @@
+[project]
+name = "crisis-intelligence-pipeline"
+version = "1.0.0"
+description = "Crisis Intelligence Pipeline for Operation Ditwah - Cyclone Relief"
+requires-python = ">=3.11"
+dependencies = [
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.5.0",
+    "jsonschema>=4.20.0",
+    "pyyaml>=6.0.1",
+    "tqdm>=4.66.0",
+    "pandas>=2.1.0",
+    "openpyxl>=3.1.0",
+    "jupyter>=1.0.0",
+    "tiktoken>=0.5.2",
+    "openai>=1.12.0",
+    "google-genai>=1.0.0",
+    "groq>=0.4.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["utils*"]
+exclude = ["logs*", "data*", "config*", "output*"]
