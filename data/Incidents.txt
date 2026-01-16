@@ -1,0 +1,4 @@
+ID | Time    | Area    | People | Ages   | Main Need | Message
+1  | 08:00 AM| Gampaha | 4      | 20-40  | Water     | "Thirsty but safe on roof. Water level stable." 
+2  | 08:15 AM| Ja-Ela  | 1      | 75     | Insulin   | "Diabetic, missed dose yesterday. Feeling faint."
+3  | 08:20 AM| Ragama  | 2      | 10, 35 | Rescue    | "Water approaching neck level. Child is crying."

@@ -1,0 +1,7 @@
+SCENARIO A: THE KANDY LANDSLIDE
+Location: Hanthana Tea Factory
+Details: "We are trapped. The access road is blocked. My uncle is stuck in the line rooms below, climbing a tree as water rises (Immediate Life Threat). However, inside the factory, we have a diabetic patient who has collapsed and needs insulin (Immediate Health Threat). We also have 40 people hungry."
+
+SCENARIO B: THE GAMPAHA HOSPITAL
+Location: Gampaha District General Hospital
+Details: "Power has failed in the ICU. We have 3 patients on ventilators with battery backup for 2 hours (Critical). Meanwhile, flood water is entering the ground floor ward where 50 elderly patients are bedridden (High Risk). We have one generator truck arriving in 30 mins, but it can only power one section."
