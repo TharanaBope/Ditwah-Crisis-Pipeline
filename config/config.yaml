@@ -1,0 +1,210 @@
+# Configuration for Crisis Intelligence Pipeline
+# Edit this file to customize behavior without changing code
+
+# ============================================================================
+# API Providers
+# ============================================================================
+providers:
+  enabled:
+    - openai
+    - google
+    - groq
+
+  disabled:
+    - anthropic
+  # Default provider if not specified
+  default: openai
+
+# ============================================================================
+# Model Selection (references models.yaml)
+# ============================================================================
+models:
+  # Auto-route reasoning techniques to reasoning models
+  auto_routing: true
+
+  # Techniques that trigger reasoning model routing
+  reasoning_techniques:
+    - cot
+    - tot
+    - cot_reasoning
+    - tot_reasoning
+    - chain_of_thought
+    - tree_of_thought
+
+# ============================================================================
+# Default LLM Parameters
+# ============================================================================
+defaults:
+  temperature: 0.2
+  max_tokens: 1000
+  top_p: 1.0
+
+  # Parameter recommendations by task type
+  by_task:
+    extraction:
+      temperature: 0.0
+      max_tokens: 500
+
+    classification:
+      temperature: 0.0
+      max_tokens: 50
+
+    generation:
+      temperature: 0.7
+      max_tokens: 1500
+
+    reasoning:
+      temperature: 0.3
+      max_tokens: 2000
+
+    creative:
+      temperature: 1.0
+      max_tokens: 2000
+
+# ============================================================================
+# Token Management
+# ============================================================================
+tokens:
+  # Token estimation settings
+  estimation:
+    enabled: true
+    provider: tiktoken  # tiktoken is the only option currently
+
+    # Log warnings when estimation differs significantly from actual
+    warn_threshold_percent: 15
+
+  # Context window management
+  context_management:
+    # Default hard cap (None = no limit, or specify number)
+    hard_prompt_cap: null
+
+    # Strategy when context overflows: "truncate" or "summarize"
+    overflow_strategy: truncate
+
+    # Reserve tokens for output
+    reserve_output_tokens: 1000
+
+  # Token counting overhead per message (approximate)
+  message_overhead_tokens: 4
+
+# ============================================================================
+# Retry & Error Handling
+# ============================================================================
+retry:
+  # Maximum retry attempts
+  max_retries: 3
+
+  # Exponential backoff settings
+  backoff:
+    base_seconds: 0.5
+    max_seconds: 30
+    jitter_factor: 0.25
+
+  # Which errors trigger retry
+  retryable_errors:
+    - rate_limit  # 429
+    - server_error  # 5xx
+    - timeout
+    - context_length  # Will attempt summarization
+
+  # Timeout settings
+  timeout_seconds: 60
+
+# ============================================================================
+# Logging
+# ============================================================================
+logging:
+  # Enable/disable logging
+  enabled: true
+
+  # Log file location
+  output_dir: logs
+  output_file: runs.csv
+
+  # What to log
+  log_tokens: true
+  log_latency: true
+  log_retries: true
+  log_cost_estimates: true
+
+  # Cost estimation settings
+  cost_estimation:
+    enabled: true
+    disclaimer: "Prices change frequently. Check provider pricing pages for accurate costs."
+
+  # Console output verbosity
+  console_verbosity: info  # debug, info, warning, error
+
+# ============================================================================
+# Safety & Validation
+# ============================================================================
+safety:
+  # Enable basic prompt injection detection
+  prompt_injection_detection: true
+
+  # Enable PII detection warnings
+  pii_detection: false  # Set to true to enable warnings
+
+  # Input sanitization
+  sanitize_inputs: true
+  max_input_length: 100000
+
+# ============================================================================
+# JSON & Structured Outputs
+# ============================================================================
+structured_outputs:
+  # Enable automatic JSON repair
+  auto_repair: true
+
+  # Enable schema validation
+  validate_schema: true
+
+  # Max repair attempts
+  max_repair_attempts: 2
+
+# ============================================================================
+# Notebook Defaults
+# ============================================================================
+notebooks:
+  # Auto-reload imports (useful for development)
+  auto_reload: false
+
+  # Default test parameters
+  test_params:
+    hello_world:
+      max_tokens: 20
+      temperature: 0.0
+
+    temperature_sweep:
+      values: [0.0, 0.5, 1.0, 1.5]
+      max_tokens: 50
+
+    max_tokens_sweep:
+      values: [10, 30, 100]
+      temperature: 0.7
+
+# ============================================================================
+# Development Settings
+# ============================================================================
+development:
+  # Cache responses for testing (not implemented yet)
+  cache_responses: false
+
+  # Dry run mode (mock API calls)
+  dry_run: false
+
+  # Debug mode (more verbose output)
+  debug: false
+
+# ============================================================================
+# Feature Flags
+# ============================================================================
+features:
+  # Enable experimental features
+  experimental: false
+
+  # Feature-specific flags
+  langchain_integration: true
+  llamaindex_integration: true
+  tool_calling: true
+  function_calling: true

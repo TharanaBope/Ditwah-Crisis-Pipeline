@@ -1,0 +1,37 @@
+# Model Configuration for Crisis Intelligence Pipeline
+# Update these as new models are released
+
+# Model Tiers:
+# - general: Fast, cost-effective for most tasks
+# - strong: Higher capability, more expensive
+# - reason: Specialized reasoning models for CoT/ToT
+
+openai:
+  general: gpt-4o-mini
+  strong: gpt-4o
+  reason: o3-mini  # Switch to o3 when available
+
+google:
+  general: gemini-2.0-flash-exp
+  strong: gemini-2.0-flash-thinking-exp
+  reason: gemini-3-pro-preview
+
+groq:
+  general: llama-3.1-8b-instant
+  strong: llama-3.1-70b-versatile
+  reason: deepseek-r1-distill-llama-70b
+
+# Context Window Reference (approximate)
+# OpenAI gpt-4o-mini: 128K tokens
+# OpenAI gpt-4o: 128K tokens
+# OpenAI o3-mini: 128K tokens
+# Google Gemini 2.0 Flash: 1M tokens
+# Groq Llama 3.1 8B: 131K tokens
+# Groq Llama 3.1 70B: 131K tokens
+# Groq DeepSeek R1: 64K tokens
+
+# Cost Reference (as of late 2024, subject to change)
+# Always check provider pricing pages for current rates
+# OpenAI: https://openai.com/pricing
+# Google: https://ai.google.dev/pricing
+# Groq: https://groq.com/pricing
